@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ComicCraftAI - Generated Comic</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #07152d,
+                    #102d52,
+                    #173b62
+                );
+
+            color: white;
+        }
+
+
+        .header {
+            text-align: center;
+
+            padding:
+                35px
+                20px
+                20px;
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            font-size: 42px;
+
+            font-family:
+                Georgia,
+                serif;
+
+            letter-spacing: 2px;
+        }
+
+
+        .header p {
+
+            font-size: 18px;
+
+            opacity: 0.85;
+
+            margin-top: 10px;
+        }
+
+
+        .comic-container {
+
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding-bottom: 60px;
+        }
+
+
+        .panel {
+
+            background: white;
+
+            color: #172033;
+
+            border-radius: 25px;
+
+            margin:
+                35px
+                0;
+
+            padding: 22px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.35);
+
+            overflow: hidden;
+        }
+
+
+        .panel-number {
+
+            display: inline-block;
+
+            padding:
+                8px
+                18px;
+
+            border-radius: 20px;
+
+            background: #172033;
+
+            color: white;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        .panel-title {
+
+            font-size: 30px;
+
+            margin:
+                5px
+                0
+                20px;
+
+            font-family:
+                Georgia,
+                serif;
+        }
+
+
+        .comic-image {
+
+            width: 100%;
+
+            max-width: 1024px;
+
+            display: block;
+
+            margin: auto;
+
+            border-radius: 18px;
+
+            border:
+                5px
+                solid
+                #172033;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.25);
+        }
+
+
+        .story-box {
+
+            margin-top: 22px;
+
+            padding: 22px;
+
+            background:
+                #f4f7fb;
+
+            border-left:
+                7px
+                solid
+                #6b4eff;
+
+            border-radius: 12px;
+        }
+
+
+        .story-heading {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+
+        .story-text {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+
+        .navigation {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 20px;
+        }
+
+
+        .navigation a {
+
+            text-decoration: none;
+
+            background:
+                #172033;
+
+            color: white;
+
+            padding:
+                14px
+                28px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .navigation a:hover {
+
+            background:
+                #31476a;
+        }
+
+
+        .footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            opacity: 0.7;
+        }
+
+
+        @media(max-width:700px) {
+
+            .header h1 {
+                font-size: 30px;
+            }
+
+            .panel-title {
+                font-size: 24px;
+            }
+
+            .story-text {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<div class="header">
+
+    <h1>
+        ✨ AI GENERATED COMIC
+    </h1>
+
+    <p>
+        A story created with ComicCraftAI
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     COMIC
+====================================================== -->
+
+<div class="comic-container">
+
+
+{% for panel in panels %}
+
+
+<div class="panel">
+
+
+    <div class="panel-number">
+
+        PANEL {{ panel.number }} / 5
+
+    </div>
+
+
+    <h2 class="panel-title">
+
+        {{ panel.title }}
+
+    </h2>
+
+
+    <!-- IMAGE -->
+
+    <img
+        src="{{ panel.image }}"
+        alt="Comic Panel {{ panel.number }}"
+        class="comic-image"
+    >
+
+
+    <!-- STORY -->
+
+    <div class="story-box">
+
+        <div class="story-heading">
+
+            📖 Story
+
+        </div>
+
+
+        <div class="story-text">
+
+            {{ panel.text }}
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        {% if panel.number > 1 %}
+
+        <a href="#panel{{ panel.number - 1 }}">
+
+            ← Previous
+
+        </a>
+
+        {% else %}
+
+        <span></span>
+
+        {% endif %}
+
+
+        {% if panel.number < 5 %}
+
+        <a href="#panel{{ panel.number + 1 }}">
+
+            Next →
+
+        </a>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+<div class="footer">
+
+    🦊 Created with ComicCraftAI
+
+</div>
+
+
+</body>
+
+</html>
